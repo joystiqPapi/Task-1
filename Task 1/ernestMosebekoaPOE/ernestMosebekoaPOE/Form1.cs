@@ -1,36 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ernestMosebekoaPOE
 {
     public partial class Form1 : Form, FormView
     {
+        private const int numberOfUnits = 8;
+        private gameEngine engine;
+        private Map map;
         public Form1()
         {
             InitializeComponent();
-        }
-
-        public void invalidateView()
-        {
-            throw new NotImplementedException();
+            map = new Map(this,numberOfUnits);
+            engine = new gameEngine(map);
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
             //START timer
             tmrTimer.Enabled = true;
+            map.displayUnitsOnBattlefield();
+            engine.initiateBattle();
         }
 
         private void timerTrigger(object sender, EventArgs e)
         {
+            engine.initiateBattle();
+        }
 
+        public void invalidateView(String battleField)
+        {
+            lblMap.Text = battleField;
+        }
+
+        public void showRound(int round)
+        {
+            lblTimer.Text = "Round " + round;
         }
     }
 }

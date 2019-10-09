@@ -41,9 +41,9 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(534, 54);
+            this.btnStart.Location = new System.Drawing.Point(623, 62);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(87, 27);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -51,9 +51,9 @@
             // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(534, 92);
+            this.btnPause.Location = new System.Drawing.Point(623, 106);
             this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(75, 23);
+            this.btnPause.Size = new System.Drawing.Size(87, 27);
             this.btnPause.TabIndex = 1;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = true;
@@ -61,34 +61,34 @@
             // lblTimer
             // 
             this.lblTimer.AutoSize = true;
-            this.lblTimer.Location = new System.Drawing.Point(531, 25);
+            this.lblTimer.Location = new System.Drawing.Point(619, 29);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(13, 13);
+            this.lblTimer.Size = new System.Drawing.Size(13, 15);
             this.lblTimer.TabIndex = 2;
             this.lblTimer.Text = "0";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.lblMap);
-            this.panel1.Location = new System.Drawing.Point(54, 19);
+            this.panel1.Location = new System.Drawing.Point(63, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(388, 310);
+            this.panel1.Size = new System.Drawing.Size(453, 358);
             this.panel1.TabIndex = 3;
             // 
             // lblMap
             // 
             this.lblMap.AutoSize = true;
-            this.lblMap.Location = new System.Drawing.Point(18, 11);
+            this.lblMap.Location = new System.Drawing.Point(21, 13);
             this.lblMap.Name = "lblMap";
-            this.lblMap.Size = new System.Drawing.Size(35, 13);
+            this.lblMap.Size = new System.Drawing.Size(38, 15);
             this.lblMap.TabIndex = 0;
             this.lblMap.Text = "label2";
             // 
             // redTypeOfUnits
             // 
-            this.redTypeOfUnits.Location = new System.Drawing.Point(474, 190);
+            this.redTypeOfUnits.Location = new System.Drawing.Point(553, 219);
             this.redTypeOfUnits.Name = "redTypeOfUnits";
-            this.redTypeOfUnits.Size = new System.Drawing.Size(290, 139);
+            this.redTypeOfUnits.Size = new System.Drawing.Size(338, 160);
             this.redTypeOfUnits.TabIndex = 0;
             this.redTypeOfUnits.Text = "";
             // 
@@ -99,9 +99,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(933, 519);
             this.Controls.Add(this.redTypeOfUnits);
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.panel1);
@@ -113,7 +113,6 @@
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -123,8 +122,14 @@
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox redTypeOfUnits;
-        public System.Windows.Forms.Label lblMap;
-        public System.Windows.Forms.Timer tmrTimer;
+
+        public void invalidateView(int[][] battleFieldLayout)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private System.Windows.Forms.Timer tmrTimer;
+        private System.Windows.Forms.Label lblMap;
     }
 }
 

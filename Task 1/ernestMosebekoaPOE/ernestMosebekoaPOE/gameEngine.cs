@@ -8,54 +8,52 @@ namespace ernestMosebekoaPOE
 {
     class gameEngine
     { //class variable
-        int numberOfRoundsCompleted;
+        int numberOfRoundsCompleted = 0;
         private Map battlefield;
-        public int health;
 
         public gameEngine(Map battleField)
         {
             this.battlefield = battleField;
         }
 
-        public void engageBattle()
+        public void initiateBattle()
         {
-            Unit[] units = battlefield.getUnits();
-            for(int i = 0; i < units.Length; i++)
+            Unit[] unitList = battlefield.getUnits();
+            for (int count = 0; count < unitList.Length; count++)
             {
-                if(health < 25)
+                Unit unit = unitList[count];
+                if (!unit.isDead())
                 {
-                 //run away
-               
+                    if (isFitForBattle(unit.returnAttackStrength()))
+                    {
+                        attackClosestEnemy(unit, unitList);
+                    }
+                    else
+                    {
+                        battlefield.unitRunAway(unit);
+                    }
                 }
+            }
+            numberOfRoundsCompleted++;
+            battlefield.showRounds(numberOfRoundsCompleted);
+        }
 
+        private void attackClosestEnemy(Unit attackingUnit, Unit [] unitList)
+        {
+            int[] closestEnemyDetails = battlefield.getClosestEnemy(attackingUnit);
+            Unit closestEnemy = unitList[closestEnemyDetails[0]];
+            int closestEnemyDistance = closestEnemyDetails[1];
+
+            if (attackingUnit.withinRange(closestEnemyDistance))
+            {
+                closestEnemy.combat(attackingUnit.returnAttackStrength());
+                battlefield.getUnits()[closestEnemyDetails[0]] = closestEnemy;
             }
         }
 
-        //class attributes
-
-        public void overallGameLogic()
-        {   //making 1 round
-            Random r = new Random();
-            int numberOfRounds = 0;
-            string action = "";
-            int actionTaken = r.Next(1, 4);
-            switch(actionTaken)
-            {
-                case 1: action = "Attack";
-                    numberOfRoundsCompleted = numberOfRoundsCompleted + 1;
-                    break;
-
-                case 2: action = "Move";
-                    numberOfRoundsCompleted = numberOfRoundsCompleted + 1;
-                    break;
-                case 3: action = "Run away";
-                    numberOfRoundsCompleted = numberOfRoundsCompleted + 1;
-                    break;
-
-            }
-    
-            
-        
+        private bool isFitForBattle(int unitHealth)
+        {
+            return unitHealth >= 25;
         }
     }
 }

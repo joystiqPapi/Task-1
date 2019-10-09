@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ernestMosebekoaPOE
 {
     interface FormView
     {
-        void invalidateView();
+        void invalidateView(String field);
+
+        void showRound(int round);
     }
 }
